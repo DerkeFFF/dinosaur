@@ -1,0 +1,65 @@
+[project]
+name = "dino-master"
+version = "1.0.0"
+description = "Chrome Dino NEAT: обучение в чистом Python-симуляторе"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "neat-python>=2.0.0",
+    "playwright>=1.65.2",
+]
+
+[project.optional-dependencies]
+real = [
+    "playwright>=1.45",
+]
+viz = [
+    "pygame>=2.5",
+]
+
+[project.scripts]
+dino-train = "dino_master.train:main"
+dino-eval = "dino_master.browser_eval:cli"
+dino-spectate = "dino_master.watch:cli"
+dino-visualize = "dino_master.render:cli"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.11",
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+files = ["src"]
+warn_unused_ignores = true
+warn_redundant_casts = true
+
+[[tool.mypy.overrides]]
+module = "neat.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "playwright.*"
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = "pygame"
+ignore_missing_imports = true

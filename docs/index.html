@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>dino-master — чемпион Chrome Dino</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header>
+        <div class="brand">
+          <h1>dino-master</h1>
+          <span class="tag">NEAT</span>
+        </div>
+        <p class="subtitle">
+          Чемпион обучен в чистом Python-симуляторе.<br />
+          Проверен на публичной Chrome Dino: 40 000 шагов.
+        </p>
+      </header>
+
+      <section class="stats" aria-label="Статистика">
+        <div class="stat">
+          <span>Эпизод</span>
+          <strong id="episode">1</strong>
+        </div>
+        <div class="stat">
+          <span>Шаги</span>
+          <strong id="steps">0</strong>
+        </div>
+        <div class="stat">
+          <span>Лучший</span>
+          <strong id="best">0</strong>
+        </div>
+        <div class="stat">
+          <span>Скорость</span>
+          <strong id="speed">—</strong>
+        </div>
+      </section>
+
+      <section class="stage">
+        <div class="frame-wrap">
+          <iframe
+            id="game"
+            src="game/index.html"
+            title="Chrome Dino"
+            scrolling="no"
+          ></iframe>
+        </div>
+        <div class="controls">
+          <button id="restart" type="button">Заново</button>
+          <span id="model">Загрузка модели…</span>
+          <span id="status">Загрузка…</span>
+        </div>
+      </section>
+
+      <footer>
+        <span>
+          Genome 7553 · 3 узла / 4 связи ·
+          <a href="https://github.com/BTur99/dino-master">исходники</a>
+        </span>
+        <span>
+          Игра: Chromium Authors / wayou. Симулятор и обучение — dino-master.
+        </span>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
